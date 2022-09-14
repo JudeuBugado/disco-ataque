@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://JELLYBELLY.TTF" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=6]
 resource_local_to_scene = true
 size = 41
 outline_size = 4
@@ -12,22 +12,34 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=2]
 resource_local_to_scene = true
-default_font = SubResource( 1 )
+default_font = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+outline_size = 8
+outline_color = Color( 0.733333, 0.0980392, 0.0980392, 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 37
-outline_size = 2
-outline_color = Color( 0.937255, 0.901961, 0.0666667, 1 )
+outline_size = 4
+outline_color = Color( 0.733333, 0.0980392, 0.0980392, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=7]
 size = 37
 outline_size = 2
 outline_color = Color( 0.937255, 0.901961, 0.0666667, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=5]
-default_font = SubResource( 4 )
+default_font = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 37
+outline_size = 4
+outline_color = Color( 0.733333, 0.0980392, 0.0980392, 1 )
+font_data = ExtResource( 2 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -40,29 +52,31 @@ anchor_bottom = 1.0
 rect_scale = Vector2( 0.954368, 0.988783 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 39.0
-margin_top = 21.0
-margin_right = 280.0
-margin_bottom = 159.0
+margin_left = 43.0
+margin_top = 22.0
+margin_right = 277.0
+margin_bottom = 158.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 241.0
-margin_bottom = 42.0
+margin_right = 234.0
+margin_bottom = 40.0
 theme = SubResource( 2 )
+custom_fonts/font = SubResource( 8 )
 text = "DISCO ATAQUE"
 
 [node name="START" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 46.0
-margin_right = 241.0
-margin_bottom = 90.0
+margin_top = 44.0
+margin_right = 234.0
+margin_bottom = 88.0
 custom_fonts/font = SubResource( 3 )
 text = "START"
 
 [node name="QUIT" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 94.0
-margin_right = 241.0
-margin_bottom = 138.0
+margin_top = 92.0
+margin_right = 234.0
+margin_bottom = 136.0
 theme = SubResource( 5 )
+custom_fonts/font = SubResource( 9 )
 text = "QUIT"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/START" to="." method="_on_START_pressed"]

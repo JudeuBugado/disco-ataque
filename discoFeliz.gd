@@ -1,10 +1,22 @@
 extends KinematicBody2D
+enum{DiscoFeliz,DiscoTriste,DiscoRaivoso}
 
+var random = RandomNumberGenerator.new()
 var velocidade = Vector2.ZERO
 var direcao1 = Vector2.UP
 var direcao2 = Vector2.LEFT
 export var aceleracao = 2
 
+func _ready():
+	random.randomize()
+	match random.randi_range(0,3):
+		0:
+			continue
+		1: 
+			continue
+		2:
+			continue
+	
 func moviment():
 	
 	if direcao1 != Vector2.ZERO:
@@ -23,8 +35,10 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	direcao1 = direcao1 * -1
 	direcao2 = direcao2 * -1
+	
 	pass # Replace with function body.
 
 
 func _on_Area2DKILL_body_entered(body):
 	body.player_morrer()
+

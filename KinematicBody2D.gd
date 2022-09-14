@@ -20,4 +20,4 @@ func _physics_process(delta):
 
 func player_morrer():
 	$".".queue_free()
-	get_tree().change_scene("res://Menu.tscn")
+	get_tree().change_scene("res://GAMEOVER.tscn")
