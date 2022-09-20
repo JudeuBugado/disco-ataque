@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://JELLYBELLY.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://LastP.gd" type="Script" id=3]
+[ext_resource path="res://BestP.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -24,8 +26,10 @@ font_data = ExtResource( 2 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 33.0
-margin_bottom = 33.0
+margin_left = -3.0
+margin_top = 27.0
+margin_right = -3.0
+margin_bottom = 27.0
 rect_rotation = 0.109255
 script = ExtResource( 1 )
 
@@ -53,21 +57,23 @@ rect_pivot_offset = Vector2( -212, -56 )
 custom_fonts/font = SubResource( 2 )
 text = "GAMEOVER"
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 115.0
-margin_top = 38.0
-margin_right = 202.0
-margin_bottom = 65.0
+[node name="LastP" type="Label" parent="."]
+margin_left = 85.0704
+margin_top = 36.8379
+margin_right = 172.07
+margin_bottom = 63.8379
 custom_fonts/font = SubResource( 4 )
 text = "LAST: 0"
+script = ExtResource( 3 )
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 115.0
-margin_top = 65.0
-margin_right = 202.0
-margin_bottom = 92.0
+[node name="BestP" type="Label" parent="."]
+margin_left = 87.1295
+margin_top = 67.834
+margin_right = 175.13
+margin_bottom = 94.834
 custom_fonts/font = SubResource( 4 )
 text = "BEST: 0"
+script = ExtResource( 4 )
 
 [connection signal="pressed" from="RESET" to="." method="_on_RESET_pressed"]
 [connection signal="pressed" from="MENU" to="." method="_on_MENU_pressed"]
