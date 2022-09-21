@@ -6,9 +6,12 @@ var velocidade = Vector2.ZERO
 var direcao1 = Vector2.UP
 var direcao2 = Vector2.LEFT
 export var aceleracao = 2
+var posicaoX
 
 func _ready():
 	random.randomize()
+	position.x = random.randi_range(20,300)
+	position.y = random.randi_range(15,150)
 	match random.randi_range(0,3):
 		0:
 			continue

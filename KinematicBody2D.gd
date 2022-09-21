@@ -4,6 +4,7 @@ var velocidade = Vector2.ZERO
 var direcao = Vector2.ZERO
 var pontuacao = 0
 export var aceleracao =2
+const DISCO = preload("res://Disco.tscn")
 
 func _ready():
 	Global.pontuacao = 0
@@ -32,4 +33,9 @@ func player_morrer():
 
 func _on_TimerPontuao_timeout():
 	Global.pontuacao += 1
-	print(String(Global.pontuacao) + "PONTOS")
+	#print(String(Global.pontuacao) + "PONTOS")
+
+
+
+
+
