@@ -8,7 +8,7 @@ func _ready():
 	position.y = random.randi_range(15,150)
 
 func spawnPonto():
-	pass
+	get_parent().SPonto()
 
 
 func _on_Area2D_body_entered(body):

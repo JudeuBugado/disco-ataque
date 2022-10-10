@@ -4,7 +4,7 @@ const DISCO = preload("res://Disco.tscn")
 const PONTO = preload("res://Pontos.tscn")
 
 func _ready():
-	SPonto()
+	pass
 
 func _on_TimerSpawn_timeout():
 	var disco = DISCO.instance()
