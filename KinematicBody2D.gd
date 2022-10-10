@@ -1,30 +1,44 @@
 extends KinematicBody2D
 
-var velocidade = Vector2.ZERO
 var direcao = Vector2.ZERO
 var pontuacao = 0
-export var aceleracao =2
 const DISCO = preload("res://Disco.tscn")
 
 func _ready():
 	Global.pontuacao = 0
 	
 func get_input():
-	direcao.y = int(Input.is_action_pressed("ui_down"))-int(Input.is_action_pressed("ui_up"))
-	direcao.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+	direcao = Vector2()
 	
-	if direcao != Vector2.ZERO:
-		velocidade=direcao*aceleracao+velocidade
-	else:
-		velocidade.x=0
-		velocidade.y=0
-	#print(velocidade)
+	if Input.is_action_pressed("ui_up"):
+		direcao += Vector2(0,-1)
+		
+	if Input.is_action_pressed("ui_down"):
+		direcao += Vector2(0,1)
+	
+	if Input.is_action_pressed("ui_right"):
+		direcao += Vector2(1,0)
+	
+	if Input.is_action_pressed("ui_left"):
+		direcao += Vector2(-1,0)
+	
+	
 func _physics_process(delta):
+	
 	get_input()
-	velocidade = move_and_slide(velocidade)
+	if direcao.length() > 0:
+		rotation = direcao.angle()
+	
+	#var look_direcao = global_position + direcao
+	#var angle_to = get_angle_to(look_direcao)
+	#var rot_direcao = sign(stepify(angle_to,0.1))
+	
+	#rotation += rot_direcao * delta * (PI*2)
+	translate(direcao * 100 * delta)
+
 
 func player_morrer():
-	$".".queue_free()
+	self.queue_free()
 	if Global.pontuacao > Global.RecordPontuacao:
 		Global.RecordPontuacao = Global.pontuacao
 		
