@@ -6,10 +6,11 @@ const DISCO = preload("res://Disco.tscn")
 
 func _ready():
 	Global.pontuacao = 0
-	
+
+
 func get_input():
 	direcao = Vector2()
-	
+
 	if Input.is_action_pressed("ui_up"):
 		direcao += Vector2(0,-1)
 		
@@ -22,7 +23,9 @@ func get_input():
 	if Input.is_action_pressed("ui_left"):
 		direcao += Vector2(-1,0)
 	
-	
+	direcao = direcao.normalized()
+
+
 func _physics_process(delta):
 	
 	get_input()

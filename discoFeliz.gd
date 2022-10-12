@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 extends KinematicBody2D
 enum{DiscoFeliz,DiscoTriste,DiscoRaivoso}
 
@@ -20,6 +21,10 @@ func _ready():
 		2:
 			continue
 	
+=======
+extends DiscoMaster
+
+>>>>>>> Stashed changes
 func moviment():
 	
 	if direcao1 != Vector2.ZERO:
@@ -29,19 +34,16 @@ func moviment():
 	else:
 		velocidade.x = 0
 		velocidade.y = 0
-	
-func _physics_process(delta):
-	moviment()
-	velocidade = move_and_slide(velocidade)
 
 
 func _on_Area2D_body_entered(body):
 	direcao1 = direcao1 * -1
 	direcao2 = direcao2 * -1
-	
-	pass # Replace with function body.
 
 
+<<<<<<< Updated upstream
 func _on_Area2DKILL_body_entered(body):
 	body.player_morrer()
 
+=======
+>>>>>>> Stashed changes
