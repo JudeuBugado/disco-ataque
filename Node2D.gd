@@ -7,11 +7,13 @@ func _ready():
 	pass
 
 func _on_TimerSpawn_timeout():
-	var disco = DISCO.instance()
-	self.add_child(disco)
-	print("aaaaaa")
+	SDisco()
+
 
 func SPonto():
 	var ponto = PONTO.instance()
 	self.add_child(ponto)
 
+func SDisco():
+	var disco = DISCO.instance()
+	self.add_child(disco)
