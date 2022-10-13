@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var direcao = Vector2.ZERO
 var pontuacao = 0
-const DISCO = preload("res://Disco.tscn")
 
 func _ready():
 	Global.pontuacao = 0
