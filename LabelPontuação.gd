@@ -1,7 +1,7 @@
 extends Label
 
 
-func _process(delta):
+func _process(_delta):
 	self.text = String(Global.pontuacao) + " PONTOS"
 
 	

@@ -17,13 +17,12 @@ func moviment():
 	
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	moviment()
 	velocidade = move_and_slide(velocidade)
 
 
-func _on_Area2D_body_entered(body):
-	
+func _on_Area2D_body_entered(_body):
 	pass 
 
 

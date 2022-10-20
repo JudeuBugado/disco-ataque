@@ -11,7 +11,7 @@ func spawnPonto():
 	get_parent().SPonto()
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	Global.pontuacao += 10
 	self.queue_free()
 	spawnPonto()

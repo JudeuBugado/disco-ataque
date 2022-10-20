@@ -11,7 +11,7 @@ func moviment():
 		velocidade.y = 0
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	direcao1 = direcao1 * -1
 	direcao2 = direcao2 * -1
 

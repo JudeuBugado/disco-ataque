@@ -1,6 +1,6 @@
 extends Control
 func _on_START_pressed():
-	get_tree().change_scene("res://Node2D.tscn")
+	assert(get_tree().change_scene("res://Node2D.tscn") == OK)
 	
 	
 

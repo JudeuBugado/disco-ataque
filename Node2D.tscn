@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Action RPG Resources/Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
 [ext_resource path="res://GerenciadorDisco.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Node2D.gd" type="Script" id=6]
-[ext_resource path="res://Pontos.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Pause.gd" type="Script" id=8]
 [ext_resource path="res://JELLYBELLY.TTF" type="DynamicFontData" id=9]
 
@@ -20,15 +18,17 @@ font_data = ExtResource( 9 )
 
 [node name="Node2D" type="Node2D"]
 rotation = 0.00012037
-script = ExtResource( 6 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 221.019, 157.973 )
-collision_layer = 13
+collision_layer = 29
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="DashTimer" type="Timer" parent="Player"]
+one_shot = true
 
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 2 )
@@ -37,6 +37,8 @@ frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
+
+[node name="Recoildash" type="Timer" parent="Player"]
 
 [node name="Parede" type="StaticBody2D" parent="."]
 position = Vector2( 162, 0 )
@@ -90,13 +92,6 @@ autostart = true
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
-[node name="TimerSpawn" type="Timer" parent="."]
-wait_time = 0.05
-one_shot = true
-autostart = true
-
-[node name="Pontos" parent="." instance=ExtResource( 7 )]
-
 [node name="GereciadorDisco" parent="." instance=ExtResource( 4 )]
 
 [node name="Pause" type="Control" parent="."]
@@ -125,5 +120,6 @@ margin_right = 323.0
 margin_bottom = 180.0
 color = Color( 0.0313726, 0.0235294, 0.0235294, 0.368627 )
 
+[connection signal="timeout" from="Player/DashTimer" to="Player" method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="Player/Recoildash" to="Player" method="_on_Recoildash_timeout"]
 [connection signal="timeout" from="TimerPontuação" to="Player" method="_on_TimerPontuao_timeout"]
-[connection signal="timeout" from="TimerSpawn" to="." method="_on_TimerSpawn_timeout"]
