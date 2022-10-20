@@ -7,8 +7,8 @@ var speed = 10
 
 func _ready():
 	random.randomize()
-	position.x = random.randi_range(20,300)
-	position.y = random.randi_range(15,150)
+	position.x = random.randi_range(90,320)
+	position.y = random.randi_range(50,145)
 
 	
 func move(delta):

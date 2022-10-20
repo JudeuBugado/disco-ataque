@@ -26,15 +26,19 @@ func get_input():
 	
 	direcao = Vector2()
 	if Input.is_action_pressed("ui_up"):
+		$Sprite.play("up")
 		direcao += Vector2(0,-1)
 
 	if Input.is_action_pressed("ui_down"):
+		$Sprite.play("down")
 		direcao += Vector2(0,1)
 
 	if Input.is_action_pressed("ui_right"):
+		$Sprite.play("right")
 		direcao += Vector2(1,0)
 
 	if Input.is_action_pressed("ui_left"):
+		$Sprite.play("left")
 		direcao += Vector2(-1,0)
 
 	if Input.is_action_pressed("dash") && !is_dashing && can_dash:
@@ -70,8 +74,8 @@ func estado_base():
 	move()
 
 func move():
-	if direcao.length() > 0:
-		rotation = direcao.angle()
+	#if direcao.length() > 0:
+		#rotation = direcao.angle()
 	
 	var _aux = move_and_slide(direcao * speed)
 

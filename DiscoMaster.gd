@@ -10,8 +10,8 @@ export var tempo = 5
 
 func _ready():
 	random.randomize()
-	position.x = random.randi_range(20,300)
-	position.y = random.randi_range(15,150)
+	position.x = random.randi_range(80,300)
+	position.y = random.randi_range(60,150)
 	
 func moviment():
 	

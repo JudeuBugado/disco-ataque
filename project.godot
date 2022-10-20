@@ -103,6 +103,13 @@ dash={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Jogador"
+2d_physics/layer_2="Paredes"
+2d_physics/layer_3="Discos"
+2d_physics/layer_4="Pontos"
+
 [physics]
 
 common/enable_pause_aware_picking=true

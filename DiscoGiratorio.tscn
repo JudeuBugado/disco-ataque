@@ -11,5 +11,5 @@ script = ExtResource( 2 )
 [node name="Disco1" parent="." index="0"]
 texture = ExtResource( 1 )
 
-[node name="selfDestruction" parent="." index="4"]
+[node name="selfDestruction" parent="." index="3"]
 wait_time = 10.0
