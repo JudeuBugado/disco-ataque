@@ -1,0 +1,104 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://sprite/front4.png" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://sprite/left2.png" type="Texture" id=3]
+[ext_resource path="res://sprite/left3.png" type="Texture" id=4]
+[ext_resource path="res://sprite/right4.png" type="Texture" id=5]
+[ext_resource path="res://sprite/back3.png" type="Texture" id=6]
+[ext_resource path="res://sprite/front1.png" type="Texture" id=7]
+[ext_resource path="res://sprite/right3.png" type="Texture" id=8]
+[ext_resource path="res://sprite/front3.png" type="Texture" id=9]
+[ext_resource path="res://sprite/back2.png" type="Texture" id=10]
+[ext_resource path="res://sprite/back4.png" type="Texture" id=11]
+[ext_resource path="res://sprite/left1.png" type="Texture" id=12]
+[ext_resource path="res://sprite/right1.png" type="Texture" id=13]
+[ext_resource path="res://sprite/left4.png" type="Texture" id=14]
+[ext_resource path="res://sprite/front2.png" type="Texture" id=15]
+[ext_resource path="res://sprite/right2.png" type="Texture" id=16]
+[ext_resource path="res://sprite/back1.png" type="Texture" id=17]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "down",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "standard down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "standard left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "standard right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "standard up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "up",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5, 10 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 288, 80 )
+collision_mask = 10
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -45.0017, -13.9943 )
+frames = SubResource( 5 )
+animation = "standard right"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -45.0016, -13.9942 )
+shape = SubResource( 6 )
+
+[node name="Recoildash" type="Timer" parent="."]
+
+[node name="NotSpawn" type="ReferenceRect" parent="."]
+margin_left = -80.0058
+margin_top = -47.9904
+margin_right = -40.0058
+margin_bottom = -7.99037
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="TimerPontuacao" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="Recoildash" to="." method="_on_Recoildash_timeout"]
+[connection signal="timeout" from="TimerPontuacao" to="." method="_on_TimerPontuacao_timeout"]

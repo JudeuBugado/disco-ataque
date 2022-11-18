@@ -33,7 +33,7 @@ func SpawnDisco():
 			var disco = DISCOVERDEG.instance()
 			self.add_child(disco)
 			$Timer.start(3)
-
+			
 func _on_Timer_timeout():
 	SpawnDisco()
 

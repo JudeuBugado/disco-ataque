@@ -8,12 +8,14 @@ var dash_direction = Vector2.ZERO
 var is_dashing = false
 var can_dash = true
 var state
+var state_Standard_Sprite
 
 
 
 var direcao = Vector2.ZERO
 var pontuacao = 0
 var speed = 100
+var posicao
 
 
 func _ready():
@@ -28,18 +30,22 @@ func get_input():
 	if Input.is_action_pressed("ui_up"):
 		$Sprite.play("up")
 		direcao += Vector2(0,-1)
+		state_Standard_Sprite = 0;
 
 	if Input.is_action_pressed("ui_down"):
 		$Sprite.play("down")
 		direcao += Vector2(0,1)
+		state_Standard_Sprite = 1;
 
 	if Input.is_action_pressed("ui_right"):
 		$Sprite.play("right")
 		direcao += Vector2(1,0)
+		state_Standard_Sprite = 2;
 
 	if Input.is_action_pressed("ui_left"):
 		$Sprite.play("left")
 		direcao += Vector2(-1,0)
+		state_Standard_Sprite = 3;
 
 	if Input.is_action_pressed("dash") && !is_dashing && can_dash:
 		state = DASH
@@ -48,10 +54,27 @@ func get_input():
 		$DashTimer.start(dash_duration)
 	
 	direcao = direcao.normalized()
+	
+	if direcao == Vector2(0,0):
+		match state_Standard_Sprite:
+			
+			0:
+				$Sprite.play("standard up")
+			
+			1: 
+				$Sprite.play("standard down")
+				
+			2: 
+				$Sprite.play("standard right")
+			
+			3: 
+				$Sprite.play("standard left")
 
 
 func _physics_process(delta):
-	
+	Global.posicao = $NotSpawn.rect_position
+	Global.posicao_atual = position
+	print(Global.posicao)
 		
 	#print(state)
 	match state:
@@ -87,10 +110,6 @@ func player_morrer():
 	assert(get_tree().change_scene("res://GAMEOVER.tscn") == OK)
 
 
-func _on_TimerPontuao_timeout():
-	Global.pontuacao += 1
-	#print(String(Global.pontuacao) + "PONTOS")
-
 
 
 func _on_DashTimer_timeout():
@@ -102,3 +121,7 @@ func _on_DashTimer_timeout():
 
 func _on_Recoildash_timeout():
 	can_dash = true
+
+
+func _on_TimerPontuacao_timeout():
+	Global.pontuacao += 1

@@ -15,7 +15,6 @@ func move(delta):
 	
 	d += delta
 	radius += 1
-	print(velocidade)
 	velocidade = Vector2(
 		sin(d * speed) * radius,
 		cos(d * speed) * radius

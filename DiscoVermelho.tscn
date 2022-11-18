@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DiscoVermelho.gd" type="Script" id=1]
+[ext_resource path="res://DiscoMaster.tscn" type="PackedScene" id=2]
+[ext_resource path="res://DiscoVermelho.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 533.333, 290 )
+
+[node name="DiscoVermelho" instance=ExtResource( 2 )]
+position = Vector2( 117, 55 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 1 )
+Speed = 0
+
+[node name="Vision" type="Area2D" parent="." index="0"]
+scale = Vector2( 1, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" index="0"]
+position = Vector2( 143.333, 106.667 )
+shape = SubResource( 1 )
+
+[node name="Disco1" parent="." index="1"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" parent="." index="2"]
+scale = Vector2( 2.34134, 2.47604 )
+
+[node name="Area2DKILL" parent="." index="3"]
+scale = Vector2( 3.87378, 4.12573 )
+
+[node name="selfDestruction" parent="." index="4"]
+one_shot = false
+autostart = false
+
+[node name="CollisionShape2D" parent="." index="5"]
+scale = Vector2( 3.85418, 3.99272 )
+
+[connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]

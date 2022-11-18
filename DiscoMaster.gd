@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name DiscoMaster
 
+ 
 var random = RandomNumberGenerator.new()
 var velocidade = Vector2.ZERO
 var direcao1 = Vector2.UP
@@ -10,8 +11,8 @@ export var tempo = 5
 
 func _ready():
 	random.randomize()
-	position.x = random.randi_range(80,300)
-	position.y = random.randi_range(60,150)
+	position.x = random.randi_range(35,60) -  Global.posicao.x
+	position.y = random.randi_range(35,60) -  Global.posicao.y
 	
 func moviment():
 	
