@@ -22,6 +22,10 @@ func _ready():
 	Global.pontuacao = 0
 	state = MOVE
 	is_dashing = false
+	Global.player = self
+	
+func _exit_tree():
+	Global.player = null
 
 
 func get_input():
@@ -38,12 +42,14 @@ func get_input():
 		state_Standard_Sprite = 1;
 
 	if Input.is_action_pressed("ui_right"):
-		$Sprite.play("right")
+		$Sprite.play("left")
+		$Sprite.flip_h = true
 		direcao += Vector2(1,0)
 		state_Standard_Sprite = 2;
 
 	if Input.is_action_pressed("ui_left"):
 		$Sprite.play("left")
+		$Sprite.flip_h = false
 		direcao += Vector2(-1,0)
 		state_Standard_Sprite = 3;
 
@@ -65,7 +71,7 @@ func get_input():
 				$Sprite.play("standard down")
 				
 			2: 
-				$Sprite.play("standard right")
+				$Sprite.play("standard left")
 			
 			3: 
 				$Sprite.play("standard left")
@@ -73,8 +79,7 @@ func get_input():
 
 func _physics_process(delta):
 	Global.posicao = $NotSpawn.rect_position
-	Global.posicao_atual = position
-	print(Global.posicao)
+	Global.posicao_atual = global_position
 		
 	#print(state)
 	match state:

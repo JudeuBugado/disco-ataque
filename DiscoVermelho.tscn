@@ -11,10 +11,9 @@ extents = Vector2( 533.333, 290 )
 position = Vector2( 117, 55 )
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 1 )
-Speed = 0
+Speed = 100
 
 [node name="Vision" type="Area2D" parent="." index="0"]
-scale = Vector2( 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" index="0"]
 position = Vector2( 143.333, 106.667 )
